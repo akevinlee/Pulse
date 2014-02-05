@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pluginInfo>
+  <author>
+    <name>Serena Software</name>
+    <email></email>
+    <website>http://serena.com</website>
+  </author>
+  <licenses>
+    <license></license>
+  </licenses>
+  <integrationType>Automation</integrationType>
+  <categories>
+    <category>Integration</category>
+	<category>Orbiter</category>
+  </categories>
+  <versions>
+    <version name="1">
+	  <releaseNote>
+	   Orbiter plugin sends an external event to Orbiter.
+	  </releaseNote>
+    </version>
+  </versions>
+</pluginInfo>

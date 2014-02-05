@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns='http://www.urbancode.com/PluginXMLSchema_v1' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+  <header>
+    <identifier id='com.serena.air.plugin.Orbiter' version='1' name='Orbiter' />
+    <description>This plugin provides steps for sending external events to Orbiter</description>
+    <tag>Integration/Orbiter</tag>
+  </header>
+
+    <step-type name='Orbiter Event'>
+        <description>Send an external event to Orbiter.</description>
+        <properties>
+            <property name='baseUrl' required='true'>
+                <property-ui type='textBox' label='Orbiter URL' description='Orbiter base path, e.g. http://hostname/orbiter.' />
+            </property>
+            <property name='baseInstance' required='true'>
+                <property-ui type='textBox' label='Orbiter instance' description="Orbiter instance, i.e. hostname." />
+            </property>
+            <property name='scmConn' required='true'>
+                <property-ui type='textBox' label='SCM Connection' description="SCM URI for tool being used, e.g. scm:dimensions:id:CM_TYPICAL@HOSTNAME-DIM12" />
+            </property>
+            <property name='useBuildTag' required='false'>
+                <property-ui type='checkBox' label='Use Build Tag' description="Use a build tag as the change set identifier, the tag will be stripped to the value after last colon" />
+            </property>
+            <property name='changeSet' required='false'>
+                <property-ui type='textBox' label='Change Set Id' description="Orbiter unique change set identifier" />
+            </property>
+            <property name='title' required='true'>
+                <property-ui type='textBox' label='Event Title' description="Title for the event, e.g. deployed successfully." />
+            </property>
+            <property name='body' required='true'>
+                <property-ui type='textAreaBox' label='Event Body' description="Description of the event." />
+            </property>
+            <property name="username" required="false">
+                <property-ui type="textBox" label="Username" description="A username required to connect to Orbiter."/>
+            </property>
+            <property name="password" required="false">
+                <property-ui type="secureBox" label="Password" description="A password required to connect to Orbiter."/>
+            </property>
+            <property name="job" required="false">
+                <property-ui type="textBox" label="Event Job" default-value="deploying-to-environment" hidden="true" description="The Orbiter job type."/>
+            </property>
+            <property name="type" required="false">
+                <property-ui type="textBox" label="Event Type" default-value="com.serena.releaseautomation" hidden="true" description="The Orbiter event type."/>
+            </property>
+            <property name='state' required='true'>
+                <property-ui type='textBox' label='Event State' default-value="0" hidden="true" description="Orbiter internal state." />
+            </property>
+            <property name='reqId' required='true'>
+                <property-ui type='textBox' label='SRA Request Id' default-value="${p:request.id}" hidden="true" description="SRA Request Id." />
+            </property>
+            <property name='serverUrl' required='true'>
+                <property-ui type='textBox' label='SRA Server URL' default-value="${p:server.url}" hidden="true" description="SRA Server URL." />
+            </property>
+        </properties>
+        <post-processing><![CDATA[
+     if (properties.get("exitCode") != 0) {
+     properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
+     }
+     else {
+     properties.put("Status", "Success");
+     }
+     ]]></post-processing>
+        <command program='${GROOVY_HOME}/bin/groovy'>
+          <arg value='-cp' />
+          <arg path='classes:lib/*'/>
+          <arg file='orbiter.groovy' />
+          <arg file='${PLUGIN_INPUT_PROPS}' />
+          <arg file='${PLUGIN_OUTPUT_PROPS}' />
+        </command>
+     </step-type>
+  
+</plugin>

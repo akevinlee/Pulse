@@ -71,7 +71,7 @@
   called to execute the targets in the build.xml.
   -->
   
-  <tool-description>Orbiter is a visual change set and peer review solution for Dimensions.</tool-description>
+  <tool-description>Serena Pulse is a visual change set and peer review solution.</tool-description>
   
   <!-- 
   **related-info is NOT required**
@@ -136,7 +136,7 @@
       -->
       
 	  <release-note plugin-version="1">
-Initial release of the Orbiter plugin.
+Initial release of the Serena Pulse plugin.
 	  </release-note>
     
   </release-notes>

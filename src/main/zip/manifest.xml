@@ -11,12 +11,12 @@
   <integrationType>Automation</integrationType>
   <categories>
     <category>Integration</category>
-	<category>Orbiter</category>
+	<category>Serena Pulse</category>
   </categories>
   <versions>
     <version name="1">
 	  <releaseNote>
-	   Orbiter plugin sends an external event to Orbiter.
+	   The Serena Pulse plugin sends an external event to Serena Pulse.
 	  </releaseNote>
     </version>
   </versions>

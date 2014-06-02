@@ -10,9 +10,9 @@
         <relativePath>../air-plugin-build-script/pom.xml</relativePath>
     </parent>
 
-    <artifactId>Orbiter</artifactId>
+    <artifactId>Pulse</artifactId>
     <packaging>pom</packaging>
-    <name>Orbiter</name>
+    <name>Pulse</name>
 
     <properties>
         <air.plugin.build.script.relative.path>../air-plugin-build-script</air.plugin.build.script.relative.path>
@@ -29,7 +29,7 @@
     </dependencies>
 
     <build>
-        <finalName>Orbiter</finalName>
+        <finalName>serena-pulse</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

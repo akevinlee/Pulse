@@ -2,7 +2,7 @@
 import wslite.http.auth.*
 import wslite.rest.*
 
-String restUrl = "http://devops:8380/orbiter/api/2"
+String restUrl = "http://devops:8380/pulse/api/2"
 String restQuery = "/issue"
 String restMethod = "post"
 String restBody = '{\n' +

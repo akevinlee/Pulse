@@ -1,4 +1,4 @@
-Orbiter
-=======
+Serena Pulse
+============
 
-Plugin to send an external event to Orbiter.
+Plugin to send an external event to Serena Pulse.

@@ -12,7 +12,7 @@
 
     <artifactId>Pulse</artifactId>
     <packaging>pom</packaging>
-    <name>Pulse</name>
+    <name>serena-pulse</name>
 
     <properties>
         <air.plugin.build.script.relative.path>../air-plugin-build-script</air.plugin.build.script.relative.path>

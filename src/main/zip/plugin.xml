@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns='http://www.urbancode.com/PluginXMLSchema_v1' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
   <header>
-    <identifier id='com.serena.air.plugin.pulse' version='1' name='pulse' />
+    <identifier id='com.serena.air.plugin.pulse' version='1' name='Pulse' />
     <description>This plugin provides steps for sending external events to Serena Pulse</description>
-    <tag>Integration/Serena Pulse</tag>
+    <tag>Integration/Serena/Pulse</tag>
   </header>
 
-    <step-type name='Pulse Event'>
-        <description>Send an external event to Serena Pulse.</description>
+    <step-type name='Send Pulse Event'>
+        <description>Send an event to Serena Pulse.</description>
         <properties>
             <property name='baseUrl' required='true'>
-                <property-ui type='textBox' label='Pulse URL' description='Serena Pulse base path, e.g. http://hostname/pulse.' />
+                <property-ui type='textBox' label='Pulse URL' description='Serena Pulse base path, e.g. http://hostname:port/pulse.' />
             </property>
             <property name='baseInstance' required='true'>
                 <property-ui type='textBox' label='Pulse instance' description="Serena Pulse instance, i.e. hostname." />
@@ -62,7 +62,7 @@
      ]]></post-processing>
         <command program='${GROOVY_HOME}/bin/groovy'>
           <arg value='-cp' />
-          <arg path='classes:lib/*'/>
+          <arg path='classes:lib:lib/*'/>
           <arg file='pulse.groovy' />
           <arg file='${PLUGIN_INPUT_PROPS}' />
           <arg file='${PLUGIN_OUTPUT_PROPS}' />

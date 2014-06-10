@@ -1,0 +1,479 @@
+{
+    "name": "pulse-event",
+    "active": true,
+    "description": "Send Event to Serena Pulse",
+    "path": "processes\/adc59ab9-bba8-4b60-8f40-13d65bb53f86",
+    "properties": [
+        {
+            "id": "c134f3c7-6998-41e5-94fb-0c96e9a80954",
+            "name": "contextType",
+            "value": "Resource",
+            "description": "",
+            "secure": false
+        },
+        {
+            "id": "904a52b8-0cb0-4553-b8ce-804818701394",
+            "name": "workingDir",
+            "value": "${p:resource\/work.dir}\/${p:process.name}",
+            "description": "",
+            "secure": false
+        }
+    ],
+    "entityType": "GenericProcess",
+    "propDefs": [
+        {
+            "name": "event.type",
+            "label": "Event Type",
+            "type": "SELECT",
+            "value": "start",
+            "required": true,
+            "description": "Event Type",
+            "allowedValues": [
+                {
+                    "label": "start",
+                    "value": "start"
+                },
+                {
+                    "label": "fail",
+                    "value": "fail"
+                },
+                {
+                    "label": "success",
+                    "value": "success"
+                }
+            ]
+        },
+        {
+            "name": "pulse.url",
+            "label": "Pulse URL",
+            "type": "TEXT",
+            "value": "http:\/\/devops:9090\/pulse",
+            "required": true,
+            "description": "Serena Pulse URL"
+        },
+        {
+            "name": "pulse.instance",
+            "label": "Pulse Instance",
+            "type": "TEXT",
+            "value": "devops",
+            "required": true,
+            "description": "Serena Pulse Instance"
+        },
+        {
+            "name": "scm.connection",
+            "label": "SCM Connection",
+            "type": "TEXT",
+            "value": "scm:dimensions:id:CM_TYPICAL@DEVOPS-DIMCM",
+            "required": true,
+            "description": "SCM Connection"
+        },
+        {
+            "name": "changeSetIdentifier",
+            "label": "Change Set Identifier",
+            "type": "TEXT",
+            "required": true,
+            "description": "Change Set Identifier"
+        },
+        {
+            "name": "application.name",
+            "label": "Application Name",
+            "type": "TEXT",
+            "required": true,
+            "description": "Application Name"
+        },
+        {
+            "name": "environment.name",
+            "label": "Environment Name",
+            "type": "TEXT",
+            "required": true,
+            "description": "Environment Name"
+        }
+    ],
+    "rootActivity": {
+        "edges": [
+            {
+                "to": "Event Type",
+                "type": "ALWAYS",
+                "value": ""
+            },
+            {
+                "to": "Send Pulse Event",
+                "from": "Create Event State (Fail)",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Create Body (Start)",
+                "from": "Create Title (Start)",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Create Body (Fail)",
+                "from": "Create Title (Fail)",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Create Event State (Success)",
+                "from": "Create Event Job",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Create Event Job",
+                "from": "Create Body (Success)",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Send Pulse Event",
+                "from": "Create Event State (Success)",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Create Title (Fail)",
+                "from": "Event Type",
+                "type": "VALUE",
+                "value": "fail"
+            },
+            {
+                "to": "e9bbac164472845eca2e08135e2179",
+                "from": "Send Pulse Event",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Create Event Job (Fail)",
+                "from": "Create Body (Fail)",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Create Title (Start)",
+                "from": "Event Type",
+                "type": "VALUE",
+                "value": "start"
+            },
+            {
+                "to": "Create Event Job (Start)",
+                "from": "Create Body (Start)",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Send Pulse Event",
+                "from": "Create Event State (Start)",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Create Body (Success)",
+                "from": "Create Title (Success)",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Create Event State (Start)",
+                "from": "Create Event Job (Start)",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Create Event State (Fail)",
+                "from": "Create Event Job (Fail)",
+                "type": "SUCCESS",
+                "value": ""
+            },
+            {
+                "to": "Create Title (Success)",
+                "from": "Event Type",
+                "type": "VALUE",
+                "value": "success"
+            }
+        ],
+        "offsets": [
+            {
+                "name": "Create Title (Success)",
+                "x": -100,
+                "y": 230
+            },
+            {
+                "name": "Create Event Job (Fail)",
+                "x": 229.5,
+                "y": 400
+            },
+            {
+                "name": "Create Event Job",
+                "x": -100,
+                "y": 400
+            },
+            {
+                "name": "Create Event State (Fail)",
+                "x": 224.5,
+                "y": 490
+            },
+            {
+                "name": "Create Event Job (Start)",
+                "x": -430.5,
+                "y": 403
+            },
+            {
+                "name": "Send Pulse Event",
+                "x": -60,
+                "y": 590
+            },
+            {
+                "name": "Create Body (Success)",
+                "x": -105,
+                "y": 316
+            },
+            {
+                "name": "Create Event State (Start)",
+                "x": -435.5,
+                "y": 490
+            },
+            {
+                "name": "e9bbac164472845eca2e08135e2179",
+                "x": 0,
+                "y": 680
+            },
+            {
+                "name": "Create Title (Fail)",
+                "x": 229.5,
+                "y": 230
+            },
+            {
+                "name": "Event Type",
+                "x": -55,
+                "y": 110
+            },
+            {
+                "name": "Create Event State (Success)",
+                "x": -105,
+                "y": 490
+            },
+            {
+                "name": "Create Body (Start)",
+                "x": -435.5,
+                "y": 316
+            },
+            {
+                "name": "Create Title (Start)",
+                "x": -430.5,
+                "y": 230
+            },
+            {
+                "name": "Create Body (Fail)",
+                "x": 224.5,
+                "y": 316
+            }
+        ],
+        "sizes": [
+            {
+                "name": "Create Event Job",
+                "width": 280,
+                "height": 60
+            },
+            {
+                "name": "Create Event State (Fail)",
+                "width": 290,
+                "height": 60
+            },
+            {
+                "name": "Create Event Job (Fail)",
+                "width": 280,
+                "height": 60
+            },
+            {
+                "name": "Create Event State (Start)",
+                "width": 290,
+                "height": 60
+            },
+            {
+                "name": "Event Type",
+                "width": 190,
+                "height": 60
+            },
+            {
+                "name": "Create Title (Start)",
+                "width": 280,
+                "height": 60
+            },
+            {
+                "name": "Create Event State (Success)",
+                "width": 290,
+                "height": 60
+            },
+            {
+                "name": "Create Body (Fail)",
+                "width": 290,
+                "height": 60
+            },
+            {
+                "name": "e9bbac164472845eca2e08135e2179",
+                "width": 80,
+                "height": 50
+            },
+            {
+                "name": "Create Title (Fail)",
+                "width": 280,
+                "height": 60
+            },
+            {
+                "name": "Create Body (Start)",
+                "width": 290,
+                "height": 60
+            },
+            {
+                "name": "Create Body (Success)",
+                "width": 290,
+                "height": 60
+            },
+            {
+                "name": "Create Title (Success)",
+                "width": 280,
+                "height": 60
+            },
+            {
+                "name": "Send Pulse Event",
+                "width": 200,
+                "height": 60
+            },
+            {
+                "name": "Create Event Job (Start)",
+                "width": 280,
+                "height": 60
+            }
+        ],
+        "type": "graph",
+        "name": "604a2544-21c4-402b-8bcb-aa4d2472c2be",
+        "children": [
+            {
+                "type": "finish",
+                "name": "e9bbac164472845eca2e08135e2179",
+                "children": []
+            },
+            {
+                "propertyName": "event.type",
+                "type": "switch",
+                "name": "Event Type",
+                "children": []
+            },
+            {
+                "propertyName": "event.title",
+                "propertyValue": "deploying ${p:application.name}",
+                "type": "createRuntimeProperty",
+                "name": "Create Title (Start)",
+                "children": []
+            },
+            {
+                "propertyName": "event.body",
+                "propertyValue": "Deploying Application ${p:application.name} to environment ${p:environment.name}",
+                "type": "createRuntimeProperty",
+                "name": "Create Body (Start)",
+                "children": []
+            },
+            {
+                "propertyName": "event.job",
+                "propertyValue": "deploying-to-environment",
+                "type": "createRuntimeProperty",
+                "name": "Create Event Job (Start)",
+                "children": []
+            },
+            {
+                "propertyName": "event.state",
+                "propertyValue": "1",
+                "type": "createRuntimeProperty",
+                "name": "Create Event State (Start)",
+                "children": []
+            },
+            {
+                "allowFailure": false,
+                "useImpersonation": false,
+                "showHidden": true,
+                "impersonationUseSudo": false,
+                "impersonationUseSsh": false,
+                "commandName": "Send Pulse Event",
+                "pluginName": "Pulse",
+                "pluginVersion": 1,
+                "properties": {
+                    "baseUrl": "${p:pulse.url}",
+                    "baseInstance": "${p:pulse.instance}",
+                    "scmConn": "${p:scm.connection}",
+                    "useBuildTag": "true",
+                    "changeSet": "${p:changeSetIdentifier}",
+                    "title": "${p:event.title}",
+                    "body": "${p:event.body}",
+                    "username": "",
+                    "password": "pbe{fVNwcGBv2VLBbTZR93H1cveWIGvvNWAM}",
+                    "job": "${p:event.job}",
+                    "type": "com.serena.releaseautomation",
+                    "state": "${p:event.state}",
+                    "reqId": "${p:request.id}",
+                    "serverUrl": "${p:server.url}"
+                },
+                "type": "plugin",
+                "name": "Send Pulse Event",
+                "children": []
+            },
+            {
+                "propertyName": "event.title",
+                "propertyValue": "deployed ${p:application.name}",
+                "type": "createRuntimeProperty",
+                "name": "Create Title (Success)",
+                "children": []
+            },
+            {
+                "propertyName": "event.body",
+                "propertyValue": "Successfully deploy build ${p:changeSetIdentifier} to environement ${p:environment.name}",
+                "type": "createRuntimeProperty",
+                "name": "Create Body (Success)",
+                "children": []
+            },
+            {
+                "propertyName": "event.job",
+                "propertyValue": "deployed",
+                "type": "createRuntimeProperty",
+                "name": "Create Event Job",
+                "children": []
+            },
+            {
+                "propertyName": "event.state",
+                "propertyValue": "3",
+                "type": "createRuntimeProperty",
+                "name": "Create Event State (Success)",
+                "children": []
+            },
+            {
+                "propertyName": "event.title",
+                "propertyValue": "failed deploying ${p:application.name} to ${p:environment.name}",
+                "type": "createRuntimeProperty",
+                "name": "Create Title (Fail)",
+                "children": []
+            },
+            {
+                "propertyName": "event.body",
+                "propertyValue": "Failed deploying build ${p:changeSetIdentifier} to ${p:environment.name}",
+                "type": "createRuntimeProperty",
+                "name": "Create Body (Fail)",
+                "children": []
+            },
+            {
+                "propertyName": "event.job",
+                "propertyValue": "deploy-failed",
+                "type": "createRuntimeProperty",
+                "name": "Create Event Job (Fail)",
+                "children": []
+            },
+            {
+                "propertyName": "event.state",
+                "propertyValue": "5",
+                "type": "createRuntimeProperty",
+                "name": "Create Event State (Fail)",
+                "children": []
+            }
+        ]
+    }
+}
